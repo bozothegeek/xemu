@@ -255,16 +255,11 @@ void xemu_hud_render(void)
     if (!ImGui::IsWindowFocused(ImGuiFocusedFlags_AnyWindow) &&
         !g_scene_mgr.IsDisplayingScene()) {
 
-        // If the guide button is pressed, wake the ui
+        // If the "Guide button + A button" are pressed, wake the ui
         bool menu_button = false;
         uint32_t buttons = g_input_mgr.CombinedButtons();
-        if (buttons & CONTROLLER_BUTTON_GUIDE) {
-            menu_button = true;
-        }
-
-        // Allow controllers without a guide button to also work
-        if ((buttons & CONTROLLER_BUTTON_BACK) &&
-            (buttons & CONTROLLER_BUTTON_START)) {
+        if ((buttons & CONTROLLER_BUTTON_GUIDE) &&
+            (buttons & CONTROLLER_BUTTON_A)) {
             menu_button = true;
         }
 
