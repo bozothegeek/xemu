@@ -105,6 +105,9 @@ void xemu_input_init(void)
         exit(1);
     }
 
+    // load mappings from Pegasus-Frontend to do it simply for the moment
+    SDL_GameControllerAddMappingsFromFile("/recalbox/share/system/.config/pegasus-frontend/sdl_controllers.txt");
+
     // Create the keyboard input (always first)
     ControllerState *new_con = malloc(sizeof(ControllerState));
     memset(new_con, 0, sizeof(ControllerState));
